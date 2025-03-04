@@ -3,15 +3,13 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <div className='bg-black'>
-      <nav className=' bg-gradient-to-r bg-clip-text text-transparent from-blue-500 to-pink-500 '>
-        <div className='flex items-center justify-center gap-[2.5vw] text-[2.8vh] font-normal h-[12vh]'>
-        <div><NavLink to='/'>Home</NavLink></div>
-        <div><NavLink to='/Projects'>Projects</NavLink></div>
-        <div><NavLink to='/'>Achievements</NavLink></div>
-        </div>
-      </nav>
-    </div>
+    <nav className="fixed w-full backdrop-blur-md text-white z-50">
+      <div className="flex items-center justify-center gap-[8vw] text-[2.4vh] font-normal h-[12vh]">
+        <NavLink to="/" className="hover:text-blue-400 transition-colors duration-300">Home</NavLink>
+        <NavLink to="/Projects" className="hover:text-blue-400 transition-colors duration-300">Projects</NavLink>
+        <NavLink to="/Certifications" className="hover:text-blue-400 transition-colors duration-300">Certifications</NavLink>
+      </div>
+    </nav>
   )
 }
 

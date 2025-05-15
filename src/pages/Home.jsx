@@ -39,68 +39,66 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-black to-slate-800 min-h-screen w-screen overflow-hidden">
+    <div className="bg-gradient-to-r from-purple-300 to-blue-400 min-h-screen w-screen overflow-hidden">
       {/* Hero Section with Fade Effect */}
       <div className="h-screen flex items-center justify-center w-full">
         <div
-          className="flex-col bg-gradient-to-r bg-clip-text text-transparent from-blue-700 to-pink-500 transition-opacity duration-300"
+          className="flex-col bg-gradient-to-r bg-clip-text text-transparent  font-thin from-blue-950 to-slate-900 transition-opacity duration-300"
           style={{
             opacity,
             transform: `translateY(${translateY}px)`,
           }}
         >
-          <h1 className="text-[10vw] text-center">PRAYRIT DHINGRA</h1>
-          <h2 className="text-[2vw] text-center">
+          <h1 className="text-[20vw] sm:text-[8vw] md:text-[10vw] lg:text-[9vw] tracking-[0.4vw] text-center">PRAYRIT DHINGRA</h1>
+          <h2 className="text-[3vh] sm:text-[2vh] md:text-[2vw] lg:text-[2vw] mt-[4vh] tracking-[0.3vw] text-center">
             FULL STACK DEVELOPER | WEB3 ENTHUSIAST
           </h2>
-          
+        <div className="text-center pt-[4vh]">
+          <button className="bg-purple-100 rounded-lg py-[1vh] px-[2vw] tracking-[0.3vw] transition-all duration-400 ease-out hover:tracking-[0.6vw]">
+          <Link
+            to="https://drive.google.com/file/d/11YeoYjRU3YtjBwiMxV3iqD2qa8xg-u54/view?usp=sharing"
+            target="blank"
+            className="bg-gradient-to-r from-blue-500 to-pink-500 bg-clip-text rounded-lg text-[2vh] sm:text-[2vh] md:text-[2.5vh] lg:text-[2.5vh] font-light "
+            >
+            RESUME
+          </Link>
+          </button>
+        </div>
         </div>
       </div>
-
-      {/* "Connect with me" with Animation */}
-      <div
-        className="bg-gradient-to-r bg-clip-text text-transparent to-blue-700 from-red-500 transition-all duration-500 ease-out w-full flex z-40 justify-center"
-        style={{
-          opacity: connectOpacity,
-          transform: `scale(${connectScale}) translateY(${connectTranslateY}px)`,
-        }}
-      >
-        <h1 className="text-[11vh] text-center">Connect with me</h1>
-      </div>
-
-      {/* Social Links Full-Screen Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-2 gap-[5vh] px-[5vw] py-[3vh]">
+        
+      <div className="grid grid-cols-2 md:grid-cols-2 gap-[5vh] font-thin px-[5vw] py-[5vh]">
         <Link
           to="https://github.com/Prayrit9"
-          className="flex flex-col justify-center items-center gap-6 p-10 bg-gray-900 rounded-3xl hover:bg-gray-800 transition h-[33vh] w-[40vw]"
+          className="flex flex-col justify-center items-center gap-6 p-[2vh] backdrop-blur-md bg-opacity-[30%] shadow-xl bg-blue-100 rounded-3xl hover:bg-blue-200 transition h-[30vh] w-[40vw]"
           target="blank"
         >
-          <img src={github} className="h-20" alt="GitHub" />
-          <h1 className="text-4xl text-white">Prayrit9</h1>
+          <img src={github} className="h-[8vh]" alt="GitHub" />
+          <h1 className="sm:text-[2.2vw] text-black">Prayrit9</h1>
         </Link>
         <Link
           to="https://www.linkedin.com/in/prayrit-dhingra-05a703229/"
-          className="flex flex-col justify-center items-center gap-6 p-10 bg-gray-900 rounded-3xl hover:bg-gray-800 transition h-[33vh] w-[40vw]"
+          className="flex flex-col justify-center items-center gap-6 p-10 backdrop-blur-md bg-opacity-[30%] shadow-xl bg-blue-100 rounded-3xl hover:bg-blue-200 transition h-[30vh] w-[40vw]"
           target="blank"
         >
-          <img src={linkedin} className="h-20" alt="LinkedIn" />
-          <h1 className="text-4xl text-white">Prayrit Dhingra</h1>
+          <img src={linkedin} className="h-[7vh]" alt="LinkedIn" />
+          <h1 className="sm:text-[2.2vw] text-black text-center">Prayrit Dhingra</h1>
         </Link>
         <Link
           to="https://mail.google.com/mail/u/0/#inbox?compose=CllgCHrgCbGdJkXRXrMdntwvVcSMJkzxQwvrmsHpgbqnmLqGTtPwMrMDzRBKMxpFCmnpcPrZPFL"
-          className="flex flex-col justify-center items-center gap-6 p-10 bg-gray-900 rounded-3xl hover:bg-gray-800 transition h-[33vh] w-[40vw]"
+          className="flex flex-col justify-center items-center gap-6 p-10 backdrop-blur-md bg-opacity-[30%] shadow-xl bg-blue-100 rounded-3xl hover:bg-blue-200 transition h-[30vh] w-[40vw]"
           target="blank"
         >
-          <img src={mail} className="h-20" alt="Mail" />
-          <h1 className="text-4xl text-white">dprayrit@gmail.com</h1>
+          <img src={mail} className="h-[7vh]" alt="Mail" />
+          <h1 className="sm:text-[2.2vw] text-black">dprayrit@gmail.com</h1>
         </Link>
         <Link
           to="https://www.instagram.com/prayrit_9/"
-          className="flex flex-col justify-center items-center gap-6 p-10 bg-gray-900 rounded-3xl hover:bg-gray-800 transition h-[33vh] w-[40vw]"
+          className="flex flex-col justify-center items-center gap-6 p-10 backdrop-blur-md bg-opacity-[30%] shadow-xl bg-blue-100 rounded-3xl hover:bg-blue-200 transition h-[30vh] w-[40vw]"
           target="blank"
         >
-          <img src={instagram} className="h-20" alt="Instagram" />
-          <h1 className="text-4xl text-white">Prayrit_9</h1>
+          <img src={instagram} className="h-[7vh]" alt="Instagram" />
+          <h1 className="sm:text-[2.2vw] text-black">Prayrit_9</h1>
         </Link>
       </div>
     </div>

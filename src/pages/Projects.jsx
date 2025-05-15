@@ -47,15 +47,15 @@ const projects = [
 
 const Projects = () => {
   return (
-    <div className="bg-gradient-to-r from-black to-slate-800 min-h-screen w-screen flex justify-center items-center p-[5vh] overflow-x-hidden">
+    <div className="bg-gradient-to-r from-purple-300 to-blue-400 min-h-screen w-screen flex justify-center items-center p-[5vh] overflow-x-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[4vh] pt-[7vh] w-full max-w-[80vw]">
         {projects.map((project, index) => (
           <div
             key={index}
-            className="bg-gray-900 p-[3vh] rounded-xl shadow-lg transform hover:scale-105 transition"
+            className="bg-blue-100 rounded-3xl hover:bg-blue-200 p-[3vh] shadow-lg transform hover:scale-105 transition"
           >
-            <h1 className="text-[3vh] font-bold text-white mb-[1vh]">{project.name}</h1>
-            <p className="text-gray-400 mb-[2vh]">{project.description}</p>
+            <h1 className="text-[3vh] font-bold text-black mb-[1vh]">{project.name}</h1>
+            <p className="text-gray-700 mb-[2vh]">{project.description}</p>
             <Link
               to={project.link}
               className="text-blue-500 hover:text-blue-300 transition"

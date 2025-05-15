@@ -38,22 +38,22 @@ const certifications = [
 
 const CertificationCard = ({ title, tags, duration, completion, link }) => {
   return (
-    <div className="bg-slate-800 p-5 rounded-2xl shadow-lg w-full max-w-[90vw] md:max-w-xl">
-      <h3 className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500">
+    <div className="bg-blue-100 rounded-3xl hover:bg-white p-[3vh] shadow-lg w-full max-w-[90vw] md:max-w-xl">
+      <h3 className="text-xl font-bold text-black">
         {title}
       </h3>
       <div className="flex flex-wrap gap-2 mt-2">
         {tags.map((tag, index) => (
           <span
             key={index}
-            className="bg-slate-700 text-white text-sm px-3 py-1 rounded-full"
+            className="bg-blue-200 text-gray-700 text-sm px-3 py-1 rounded-full"
           >
             {tag}
           </span>
         ))}
       </div>
-      {duration && <p className="text-gray-400 mt-2">{duration}</p>}
-      {completion && <p className="text-gray-400">{completion}</p>}
+      {duration && <p className="text-gray-600 mt-2">{duration}</p>}
+      {completion && <p className="text-gray-600">{completion}</p>}
       <a
         href={link}
         className="text-blue-400 hover:underline mt-2 block"
@@ -67,7 +67,7 @@ const CertificationCard = ({ title, tags, duration, completion, link }) => {
 
 const CertificationsPage = () => {
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center py-10 px-5 w-full overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-r from-purple-300 to-blue-400 flex flex-col items-center py-10 px-5 w-full overflow-x-hidden">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 container pt-[7vh] mx-auto">
         {certifications.map((cert, index) => (
           <CertificationCard key={index} {...cert} />

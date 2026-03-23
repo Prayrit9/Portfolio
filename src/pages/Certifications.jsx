@@ -123,7 +123,7 @@ const CertificationsPage = () => {
   const otherCertifications = certifications.filter(cert => !cert.featured);
 
   return (
-    <div className="min-h-screen bg-black pt-20">
+    <div className="min-h-screen bg-black pt-20 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/20 to-pink-900/20" />
       

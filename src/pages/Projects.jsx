@@ -4,6 +4,13 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
+    name: "FinCap",
+    description: "A mobile expense management and budgeting app with real-time tracking, secure Firebase authentication, automated spending limits, recurring expenses, quick-add transactions, and AI-driven financial insights.",
+    link: "#",
+    tags: ["React Native (Expo)", "TypeScript", "Firebase", "Firestore", "Zustand"],
+    featured: true
+  },
+  {
     name: "Integriguard",
     description: "A blockchain-based supply chain management system ensuring transparency and security with real-time tracking capabilities.",
     link: "https://github.com/Prayrit9/Integriguard",
@@ -123,7 +130,7 @@ const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black pt-20">
+    <div className="min-h-screen bg-black pt-20 relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/20 to-pink-900/20" />
       

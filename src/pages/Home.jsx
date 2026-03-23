@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Instagram, Download, ExternalLink } from "lucide-react";
+import { Github, Linkedin, Mail, Instagram, Download, ExternalLink, Briefcase, Calendar } from "lucide-react";
 import TechStack from "../components/TechStack";
 
 const Home = () => {
@@ -57,6 +57,32 @@ const Home = () => {
       icon: Instagram,
       url: "https://www.instagram.com/prayrit_9/",
       color: "hover:text-pink-400"
+    }
+  ];
+
+  const experiences = [
+    {
+      role: "Software Developer",
+      company: "Surety Seven",
+      location: "Remote",
+      duration: "June 2025 - Present",
+      highlights: [
+        "Ship 5+ full-stack features each sprint with Next.js and React, delivering responsive dashboards and production-ready UI.",
+        "Build REST APIs across multiple services to connect frontend workflows with backend logic and third-party data.",
+        "Improve reliability with strong unit/integration testing and high-quality code reviews in an Agile workflow.",
+        "Optimize PostgreSQL data models with Prisma and scale AWS infrastructure for a cloud-native SaaS product.",
+        "Use AI-assisted development to reduce debugging and review time by ~30% and deliver ahead of schedule."
+      ]
+    },
+    {
+      role: "Content Creation Intern",
+      company: "Beyond Brands",
+      location: "Remote",
+      duration: "June 2024 - Aug 2024",
+      highlights: [
+        "Created 20+ photo and video ad creatives for 3 client brands, helping boost engagement and audience reach.",
+        "Delivered 100% of assigned content on time while consistently meeting brand standards and campaign deadlines."
+      ]
     }
   ];
 
@@ -184,9 +210,9 @@ const Home = () => {
               </span>
             </h2>
             <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed mb-12">
-              I&apos;m a passionate full-stack developer with a deep interest in blockchain technology and Web3 innovations. 
-              With expertise in modern web technologies and decentralized systems, I create solutions that bridge 
-              traditional web development with the future of decentralized applications.
+              I build fast, scalable digital products across modern web and cloud stacks.
+              From full-stack SaaS platforms to Web3-driven ideas, I focus on clean architecture,
+              strong user experience, and real business impact.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {['Frontend Development', 'Blockchain & Web3', 'Full Stack Solutions'].map((skill, index) => (
@@ -200,6 +226,63 @@ const Home = () => {
                 >
                   <h3 className="text-2xl md:text-3xl font-normal text-indigo-400 mb-6">{skill}</h3>
                   <p className="text-gray-400 text-lg">Crafting modern, scalable solutions</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Experience Section */}
+        <motion.section
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="min-h-[70vh] flex items-center py-12 px-4"
+        >
+          <div className="max-w-6xl mx-auto w-full">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-center mb-16">
+              <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                Experience
+              </span>
+            </h2>
+
+            <div className="grid grid-cols-1 gap-8">
+              {experiences.map((experience, index) => (
+                <motion.div
+                  key={`${experience.role}-${experience.company}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.01, y: -4 }}
+                  className="glass p-8 rounded-xl transition-all duration-300"
+                >
+                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <div className="flex items-center gap-3">
+                      <Briefcase className="text-indigo-400" size={28} />
+                      <h3 className="text-2xl md:text-3xl font-normal text-white">
+                        {experience.role}
+                      </h3>
+                    </div>
+                    <div className="flex items-center gap-2 text-gray-300">
+                      <Calendar size={18} />
+                      <span className="text-base md:text-lg">{experience.duration}</span>
+                    </div>
+                  </div>
+
+                  <p className="text-indigo-400 text-lg md:text-xl mb-4">
+                    {experience.company} • {experience.location}
+                  </p>
+
+                  <ul className="space-y-3">
+                    {experience.highlights.map((highlight) => (
+                      <li key={highlight} className="text-gray-300 text-lg leading-relaxed flex items-start gap-3">
+                        <span className="text-indigo-400 mt-2 text-sm">•</span>
+                        <span>{highlight}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
               ))}
             </div>

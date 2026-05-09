@@ -171,7 +171,7 @@ const Home = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <motion.a
-                href="https://drive.google.com/file/d/11YeoYjRU3YtjBwiMxV3iqD2qa8xg-u54/view?usp=sharing"
+                href="https://drive.google.com/file/d/1jIqqVEsb0useUd3wEpATUoONViBRzCKM/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}

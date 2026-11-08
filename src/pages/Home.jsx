@@ -26,8 +26,8 @@ const Home = () => {
   }, []);
 
   // Calculate opacity and translation based on scroll position
-  const heroOpacity = Math.max(0, 1 - scrollY / 500);
-  const heroTranslateY = scrollY * 0.3;
+  const heroOpacity = Math.max(0.45, 1 - scrollY / 900);
+  const heroTranslateY = Math.min(scrollY * 0.08, 40);
 
   const socialLinks = [
     {
@@ -49,7 +49,8 @@ const Home = () => {
       username: "dprayrit@gmail.com",
       icon: Mail,
       url: "mailto:dprayrit@gmail.com",
-      color: "hover:text-red-400"
+      color: "hover:text-red-400",
+      isEmail: true
     },
     {
       name: "Instagram",
@@ -63,15 +64,14 @@ const Home = () => {
   const experiences = [
     {
       role: "Software Developer",
-      company: "Surety Seven",
-      location: "Remote",
+      company: "Surety Seven Technology Pvt. Ltd.",
+      location: "On-site · New Delhi, India",
       duration: "June 2025 - Present",
       highlights: [
-        "Ship 5+ full-stack features each sprint with Next.js and React, delivering responsive dashboards and production-ready UI.",
-        "Build REST APIs across multiple services to connect frontend workflows with backend logic and third-party data.",
-        "Improve reliability with strong unit/integration testing and high-quality code reviews in an Agile workflow.",
-        "Optimize PostgreSQL data models with Prisma and scale AWS infrastructure for a cloud-native SaaS product.",
-        "Use AI-assisted development to reduce debugging and review time by ~30% and deliver ahead of schedule."
+        "Build end-to-end products for an InsurTech business, working across responsive interfaces, backend APIs, databases, and cloud deployment.",
+        "Ship production-ready features with Next.js, React, TypeScript, PostgreSQL, Prisma ORM, and AWS.",
+        "Connect frontend workflows to reliable REST APIs and third-party data across multiple services.",
+        "Use AI-assisted development with Claude and GitHub Copilot to move faster while keeping quality and maintainability high."
       ]
     },
     {
@@ -126,10 +126,10 @@ const Home = () => {
         }}
       />
 
-      <div className="relative z-20 pt-20">
+      <div className="relative z-20 pt-16 sm:pt-20">
         {/* Hero Section */}
         <section 
-          className="min-h-screen flex items-center justify-center px-4 -mt-20"
+          className="min-h-[calc(100svh-4rem)] flex items-center justify-center px-4 py-16 sm:-mt-20"
           style={{
             opacity: heroOpacity,
             transform: `translateY(${heroTranslateY}px)`,
@@ -140,14 +140,17 @@ const Home = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="text-center max-w-4xl mx-auto"
+            className="text-center max-w-5xl mx-auto"
           >
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light mb-8">
+              <p className="text-indigo-300 text-xs sm:text-sm font-semibold tracking-[0.3em] uppercase mb-5">
+                Software Developer · Full-stack builder
+              </p>
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-light mb-6 sm:mb-8">
                 <span className="bg-gradient-to-r from-white via-indigo-200 to-purple-200 bg-clip-text text-transparent">
                   PRAYRIT DHINGRA
                 </span>
@@ -159,8 +162,8 @@ const Home = () => {
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <p className="text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 font-light tracking-wide">
-                FULL STACK DEVELOPER • WEB3 ENTHUSIAST
+              <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl lg:text-2xl text-gray-300 mb-8 font-light leading-relaxed">
+                I build reliable, user-focused web and mobile products from interface to cloud deployment.
               </p>
             </motion.div>
 
@@ -168,15 +171,15 @@ const Home = () => {
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+              className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center"
             >
               <motion.a
-                href="https://drive.google.com/file/d/1jIqqVEsb0useUd3wEpATUoONViBRzCKM/view?usp=sharing"
+                href="https://drive.google.com/file/d/10Uptlzo9of7Gqk_mSO5Jlr_7eXYLEbSQ/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="glass px-10 py-5 rounded-xl text-lg font-medium transition-all duration-300 glow group flex items-center gap-3"
+                className="glass px-6 sm:px-10 py-4 sm:py-5 rounded-xl text-base sm:text-lg font-medium transition-all duration-300 glow group flex items-center justify-center gap-3"
               >
                 <Download size={24} />
                 View Resume
@@ -187,10 +190,25 @@ const Home = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-                className="px-10 py-5 border border-indigo-500 text-indigo-400 rounded-xl text-lg font-medium hover:bg-indigo-500 hover:text-white transition-all duration-300"
+                className="px-6 sm:px-10 py-4 sm:py-5 border border-indigo-500 text-indigo-400 rounded-xl text-base sm:text-lg font-medium hover:bg-indigo-500 hover:text-white transition-all duration-300"
               >
                 Get In Touch
               </motion.button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="mt-10 sm:mt-14 max-w-3xl mx-auto px-5 py-4"
+            >
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
+                Currently building products at <span className="text-gray-200">Surety Seven</span>
+                <span className="mx-2 text-indigo-400">·</span>
+                based in <span className="text-gray-200">New Delhi, India</span>
+                <span className="mx-2 text-indigo-400">·</span>
+                working across web, mobile, and cloud.
+              </p>
             </motion.div>
           </motion.div>
         </section>
@@ -201,31 +219,37 @@ const Home = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="min-h-[70vh] flex items-center py-12 px-4"
+          className="flex items-center py-14 sm:py-20 px-4"
         >
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light mb-12">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="text-indigo-300 text-sm font-semibold tracking-[0.2em] uppercase mb-4">What I bring</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8">
               <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                 About Me
               </span>
             </h2>
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-300 leading-relaxed mb-12">
-              I build fast, scalable digital products across modern web and cloud stacks.
-              From full-stack SaaS platforms to Web3-driven ideas, I focus on clean architecture,
-              strong user experience, and real business impact.
+            <p className="text-lg sm:text-xl md:text-2xl text-gray-300 leading-relaxed mb-10 max-w-4xl mx-auto">
+              I&apos;m a Full-Stack Software Developer at an InsurTech company, finishing my B.E.
+              in Computer Science Engineering with a Blockchain Technology specialization.
+              I enjoy solving real business problems and turning ideas into useful products.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {['Frontend Development', 'Blockchain & Web3', 'Full Stack Solutions'].map((skill, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+              {[
+                ['Full-Stack Development', 'Thoughtful products built across interfaces, APIs, data, and deployment.'],
+                ['Product Engineering', 'Full-stack features shipped with clean, maintainable code.'],
+                ['Cloud & Web3', 'Practical systems built for scale, security, and experimentation.']
+              ].map(([skill, description], index) => (
                 <motion.div
                   key={skill}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="glass p-8 rounded-xl"
+                  className="glass p-6 sm:p-8 rounded-xl text-left"
                 >
-                  <h3 className="text-2xl md:text-3xl font-normal text-indigo-400 mb-6">{skill}</h3>
-                  <p className="text-gray-400 text-lg">Crafting modern, scalable solutions</p>
+                  <span className="text-sm text-indigo-300">0{index + 1}</span>
+                  <h3 className="text-xl md:text-2xl font-normal text-white mt-3 mb-3">{skill}</h3>
+                  <p className="text-gray-400 leading-relaxed">{description}</p>
                 </motion.div>
               ))}
             </div>
@@ -238,10 +262,11 @@ const Home = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="min-h-[70vh] flex items-center py-12 px-4"
+          className="flex items-center py-14 sm:py-20 px-4"
         >
           <div className="max-w-6xl mx-auto w-full">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-center mb-16">
+            <p className="text-indigo-300 text-sm font-semibold tracking-[0.2em] uppercase text-center mb-4">Where I&apos;ve made an impact</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-center mb-10 sm:mb-16">
               <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                 Experience
               </span>
@@ -256,18 +281,18 @@ const Home = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.01, y: -4 }}
-                  className="glass p-8 rounded-xl transition-all duration-300"
+                  className="glass p-5 sm:p-8 rounded-xl transition-all duration-300"
                 >
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
                     <div className="flex items-center gap-3">
                       <Briefcase className="text-indigo-400" size={28} />
-                      <h3 className="text-2xl md:text-3xl font-normal text-white">
+                      <h3 className="text-xl md:text-3xl font-normal text-white">
                         {experience.role}
                       </h3>
                     </div>
                     <div className="flex items-center gap-2 text-gray-300">
                       <Calendar size={18} />
-                      <span className="text-base md:text-lg">{experience.duration}</span>
+                      <span className="text-sm md:text-lg">{experience.duration}</span>
                     </div>
                   </div>
 
@@ -277,7 +302,7 @@ const Home = () => {
 
                   <ul className="space-y-3">
                     {experience.highlights.map((highlight) => (
-                      <li key={highlight} className="text-gray-300 text-lg leading-relaxed flex items-start gap-3">
+                      <li key={highlight} className="text-gray-300 text-base md:text-lg leading-relaxed flex items-start gap-3">
                         <span className="text-indigo-400 mt-2 text-sm">•</span>
                         <span>{highlight}</span>
                       </li>
@@ -299,34 +324,42 @@ const Home = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="min-h-[70vh] flex items-center py-12 px-4"
+          className="flex items-center py-14 sm:py-20 px-4"
         >
           <div className="max-w-6xl mx-auto w-full">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-center mb-16">
+            <p className="text-indigo-300 text-sm font-semibold tracking-[0.2em] uppercase text-center mb-4">Open to meaningful work</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-center mb-10 sm:mb-16">
               <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                 Let&apos;s Connect
               </span>
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {socialLinks.map((social, index) => {
                 const IconComponent = social.icon;
                 return (
                   <motion.a
                     key={social.name}
                     href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={social.isEmail ? undefined : "_blank"}
+                    rel={social.isEmail ? undefined : "noopener noreferrer"}
+                    onClick={(event) => {
+                      if (social.isEmail) {
+                        event.preventDefault();
+                        window.location.href = social.url;
+                      }
+                    }}
+                    aria-label={social.isEmail ? `Email ${social.username}` : `Open ${social.name} profile`}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                     whileHover={{ scale: 1.05, y: -5 }}
-                    className={`glass p-8 rounded-xl text-center transition-all duration-300 group ${social.color}`}
+                    className={`glass p-6 sm:p-8 rounded-xl text-center transition-all duration-300 group ${social.color}`}
                   >
-                    <IconComponent size={60} className="mx-auto mb-6 text-gray-400 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-xl md:text-2xl font-normal mb-4">{social.name}</h3>
-                    <p className="text-gray-400 text-base md:text-lg">{social.username}</p>
+                    <IconComponent size={48} className="mx-auto mb-5 text-gray-400 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-xl md:text-2xl font-normal mb-3">{social.name}</h3>
+                    <p className="text-gray-400 text-sm md:text-base break-words">{social.username}</p>
                   </motion.a>
                 );
               })}

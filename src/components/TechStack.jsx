@@ -6,23 +6,19 @@ import {
   SiNextdotjs,
   SiTypescript,
   SiNodedotjs,
-  SiExpress,
-  SiMongodb,
   SiPostgresql,
-  SiTailwindcss,
-  SiFramer,
   SiSolidity,
-  SiIpfs,
   SiPython,
   SiAmazonwebservices,
-  SiDocker,
   SiGit,
   SiTensorflow
 } from "react-icons/si";
 import { 
   Link,
   Globe,
-  Scroll
+  Scroll,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 
 const SkillBadge = ({ skill, icon: Icon, delay = 0 }) => (
@@ -32,9 +28,9 @@ const SkillBadge = ({ skill, icon: Icon, delay = 0 }) => (
     transition={{ duration: 0.3, delay }}
     viewport={{ once: true }}
     whileHover={{ scale: 1.05 }}
-    className="flex flex-col items-center justify-center gap-4 px-8 py-8 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl border border-indigo-500/30 text-indigo-300 text-lg md:text-xl font-medium whitespace-nowrap min-w-max min-h-[160px] w-48"
+    className="flex flex-col items-center justify-center gap-3 px-5 py-6 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-2xl border border-indigo-500/30 text-indigo-300 text-base md:text-xl font-medium whitespace-nowrap min-w-[132px] min-h-[132px] w-40"
   >
-    <Icon size={48} />
+    <Icon size={40} />
     <span className="text-center">{skill}</span>
   </motion.div>
 );
@@ -47,27 +43,26 @@ SkillBadge.propTypes = {
 
 const TechStack = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [canScroll, setCanScroll] = useState(false);
   const scrollRef = useRef(null);
 
   const skills = [
-    { name: "React", icon: SiReact },
     { name: "Next.js", icon: SiNextdotjs },
+    { name: "React", icon: SiReact },
+    { name: "React Native", icon: SiReact },
     { name: "TypeScript", icon: SiTypescript },
     { name: "Node.js", icon: SiNodedotjs },
-    { name: "Express", icon: SiExpress },
-    { name: "MongoDB", icon: SiMongodb },
+    { name: "FastAPI", icon: SiPython },
+    { name: "Flask", icon: SiPython },
     { name: "PostgreSQL", icon: SiPostgresql },
-    { name: "Tailwind CSS", icon: SiTailwindcss },
-    { name: "Framer Motion", icon: SiFramer },
-    { name: "Blockchain", icon: Link },
-    { name: "Web3", icon: Globe },
-    { name: "Solidity", icon: SiSolidity },
-    { name: "IPFS", icon: SiIpfs },
-    { name: "Smart Contracts", icon: Scroll },
-    { name: "Python", icon: SiPython },
-    { name: "Machine Learning", icon: SiTensorflow },
+    { name: "Prisma ORM", icon: SiPostgresql },
+    { name: "Firebase", icon: Globe },
+    { name: "Zustand", icon: Link },
     { name: "AWS", icon: SiAmazonwebservices },
-    { name: "Docker", icon: SiDocker },
+    { name: "Google Cloud", icon: Globe },
+    { name: "AI & Agents", icon: SiTensorflow },
+    { name: "MCP", icon: Scroll },
+    { name: "Web3", icon: SiSolidity },
     { name: "Git", icon: SiGit }
   ];
 
@@ -78,6 +73,7 @@ const TechStack = () => {
         const maxScroll = scrollWidth - clientWidth;
         const progress = maxScroll > 0 ? (scrollLeft / maxScroll) * 100 : 0;
         setScrollProgress(progress);
+        setCanScroll(maxScroll > 0);
       }
     };
 
@@ -94,15 +90,22 @@ const TechStack = () => {
     };
   }, []);
 
+  const scrollSkills = (direction) => {
+    scrollRef.current?.scrollBy({
+      left: direction * Math.min(scrollRef.current.clientWidth * 0.8, 420),
+      behavior: "smooth"
+    });
+  };
+
   return (
-    <section className="min-h-[70vh] flex items-center py-12 px-4">
+    <section className="flex items-center py-14 sm:py-20 px-4">
       <div className="max-w-6xl mx-auto text-center w-full">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-6xl font-light mb-12"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light mb-8"
         >
           <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
             Technologies & Skills
@@ -114,19 +117,39 @@ const TechStack = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="text-xl md:text-2xl lg:text-3xl text-gray-300 mb-16 max-w-4xl mx-auto"
+          className="text-base sm:text-lg md:text-xl text-gray-300 mb-8 max-w-4xl mx-auto"
         >
-          A diverse skill set covering modern web development, blockchain technology, 
-          and emerging digital solutions.
+          A practical toolkit for shipping complete products: modern interfaces, APIs,
+          data systems, cloud infrastructure, and AI-assisted workflows.
         </motion.p>
 
         {/* Horizontally scrollable container */}
-        <div className="relative">
+        <div className="relative group">
+          {canScroll && (
+            <div className="flex justify-end gap-2 mb-4">
+              <button
+                type="button"
+                onClick={() => scrollSkills(-1)}
+                aria-label="Scroll skills left"
+                className="p-2 rounded-full border border-white/10 text-gray-400 hover:text-white hover:border-indigo-400 hover:bg-indigo-500/10 transition-colors"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                type="button"
+                onClick={() => scrollSkills(1)}
+                aria-label="Scroll skills right"
+                className="p-2 rounded-full border border-white/10 text-gray-400 hover:text-white hover:border-indigo-400 hover:bg-indigo-500/10 transition-colors"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          )}
           <div 
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto pb-6 scrollbar-hide scroll-smooth"
+            className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide scroll-smooth snap-x snap-mandatory"
           >
-            <div className="flex gap-6 pl-4">
+            <div className="flex gap-4 pl-1">
               {skills.map((skill, index) => (
                 <SkillBadge key={skill.name} skill={skill.name} icon={skill.icon} delay={index * 0.05} />
               ))}

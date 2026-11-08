@@ -127,39 +127,21 @@ const CertificationsPage = () => {
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/20 via-purple-900/20 to-pink-900/20" />
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-12">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 min-h-[30vh] flex flex-col justify-center"
-        >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-light mb-12">
-            <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-              Certifications
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto">
-            Professional certifications and specialized training that demonstrate my commitment to 
-            continuous learning and expertise in cutting-edge technologies.
-          </p>
-        </motion.div>
-
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-6 sm:py-8">
         {/* Featured Certifications */}
         <motion.section
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-12 min-h-[70vh] flex flex-col justify-center"
+          className="mb-10"
         >
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-12">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-6">
             <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
               Specializations
             </span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {featuredCertifications.map((cert, index) => (
               <CertificationCard key={cert.title} cert={cert} index={index} />
             ))}
@@ -173,14 +155,14 @@ const CertificationsPage = () => {
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="pb-8 min-h-[70vh] flex flex-col justify-center"
+            className="pb-6"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-12">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-normal mb-6">
               <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
                 Additional Certifications
               </span>
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {otherCertifications.map((cert, index) => (
                 <CertificationCard key={cert.title} cert={cert} index={index} />
               ))}

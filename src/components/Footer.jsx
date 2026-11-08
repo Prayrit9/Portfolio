@@ -19,7 +19,8 @@ const Footer = () => {
       name: "Email",
       icon: Mail,
       url: "mailto:dprayrit@gmail.com",
-      color: "hover:text-red-400"
+      color: "hover:text-red-400",
+      isEmail: true
     },
     {
       name: "Instagram",
@@ -46,10 +47,10 @@ const Footer = () => {
               </span>
             </motion.div>
             <p className="text-gray-400 mb-4">
-              Full Stack Developer & Web3 Enthusiast
+              Full-Stack Software Developer
             </p>
             <p className="text-gray-500 text-sm">
-              Crafting digital experiences with modern technologies
+              Building thoughtful products with modern technologies
             </p>
           </div>
 
@@ -80,8 +81,15 @@ const Footer = () => {
                   <motion.a
                     key={social.name}
                     href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    target={social.isEmail ? undefined : "_blank"}
+                    rel={social.isEmail ? undefined : "noopener noreferrer"}
+                    onClick={(event) => {
+                      if (social.isEmail) {
+                        event.preventDefault();
+                        window.location.href = social.url;
+                      }
+                    }}
+                    aria-label={social.isEmail ? `Email ${social.name}` : `Open ${social.name} profile`}
                     whileHover={{ scale: 1.2, y: -2 }}
                     className={`p-2 rounded-lg glass transition-all duration-300 ${social.color}`}
                   >
@@ -101,7 +109,7 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
             className="text-gray-500 flex items-center justify-center gap-2"
           >
-            Made with <Heart size={16} className="text-red-500" /> by Prayrit Dhingra © 2025
+            Made with <Heart size={16} className="text-red-500" /> by Prayrit Dhingra © {new Date().getFullYear()}
           </motion.p>
         </div>
       </div>

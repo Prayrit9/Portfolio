@@ -29,13 +29,13 @@ const Navbar = () => {
         isScrolled ? 'py-4' : 'py-8'
       }`}
     >
-      <div className="max-w-2xl mx-auto px-2 sm:px-2 lg:px-4">
-        <div className={`glass rounded-3xl px-2 py-3 transition-all duration-300 ${
+      <div className="max-w-3xl mx-auto px-3 sm:px-4">
+        <div className={`glass rounded-2xl sm:rounded-3xl px-2 py-2.5 sm:py-3 transition-all duration-300 ${
           isScrolled ? 'glow' : ''
         }`}>
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center min-h-10">
             {/* Desktop Navigation */}
-            <div className="hidden md:flex space-x-12">
+            <div className="hidden md:flex items-center space-x-8 lg:space-x-12">
               {navItems.map((item) => (
                 <NavLink
                   key={item.name}
@@ -62,9 +62,10 @@ const Navbar = () => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden absolute right-0">
+            <div className="md:hidden absolute right-2">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
                 className="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors"
               >
                 {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -78,7 +79,7 @@ const Navbar = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 pt-4 border-t border-gray-700"
+              className="md:hidden mt-3 pt-3 border-t border-gray-700"
             >
               <div className="flex flex-col space-y-2">
                 {navItems.map((item) => (
